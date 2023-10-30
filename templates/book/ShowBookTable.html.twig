@@ -1,0 +1,50 @@
+{{form_start(f)}}
+
+{{form_label(f.ref)}}
+{{form_widget(f.ref)}}
+
+{{form_end(f)}}
+
+{%if book is not empty %}
+
+<table border="2">
+    <tr>
+
+        <td>Title</td>
+        <td>Publication Date</td>
+        <td>Published</td>
+        <td>Category</td>
+        <td>Author</td>
+        <td>Author Number Of Books</td>
+        <td>Actions</td>
+        
+    </tr>
+    
+    {%for i in book %}
+    <tr>
+
+        <td>{{i.title}}</td>
+        <td>{{i.PublicationDate|date()}}</td>
+        <td>{{i.published}}</td>
+        <td>{{i.category}}</td>
+        <td>{{i.Author.username}}</td>
+         <td>{{i.Author.nbrbooks}}</td>
+
+       <td><a href="{{path('UpdateLivre',{'ref': i.ref})}}">Edit</a>
+        <a href="{{path('DeleteBook',{'ref': i.ref})}}">Delete</a>
+        <a href="{{path('BookDetails',{'ref': i.ref})}}">Show</a></td> 
+       
+        
+    </tr>
+    {%endfor%}
+   
+</table>
+Number Of Published Books: {{NBRPublishedBooks}} <br>
+Number Of UnPublished Books: {{NBRUnpublishedBooks}} <br>
+TOTAL books in SI-FI category is : {{NBROfSIFIBooks}} <br>
+{%else%}
+NO BOOKS HERE
+{%endif%} <br>
+<a href="{{path('AjouterUnLivre')}}">
+    <button>ADD New</button>
+</a>

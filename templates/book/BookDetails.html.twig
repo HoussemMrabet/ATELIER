@@ -1,0 +1,6 @@
+Title : {{book.title}} <br>
+Category :{{book.category}}<br>
+Publication Date :{{book.publicationdate|date()}}<br>
+Author :{{book.author.username}}<br>
+<a href="{{path('ShowBookTable')}}">back to list</a>
+<a href="{{path('UpdateLivre',{'ref': book.ref})}}">edit</a>

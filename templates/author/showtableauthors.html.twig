@@ -1,0 +1,31 @@
+nombre auteurs: {{authors|length}}
+{% if authors is defined and authors |length > 0 %}
+{%set total= 0 %}
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>picture</td>
+        <td>username</td>
+        <td>email</td>
+        <td>nb_books</td>
+        <td>action</td>
+    </tr>
+
+    {% for author in authors %}
+    <tr>
+        <td>{{ author.id }}</td>
+        <td><img src="{{ asset(author.picture) }}" style="width: 100px; height: 100px;"></td>
+        <td>{{ author.username|upper }}</td>
+        <td>{{ author.email }}</td>
+        <td>{{ author.nb_books }}</td>
+         <td><a href="{{path('showbyidauthor',{'id': author.id})}}">Details</td>
+        {% set total= total + author.nb_books %}
+    </tr>
+
+    {% endfor %}
+
+</table>
+{%else%}
+is empty
+{%endif%}
+nombre books : {{total}}

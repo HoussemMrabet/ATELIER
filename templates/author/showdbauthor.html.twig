@@ -1,0 +1,30 @@
+{{form_start(f)}}
+{{form_label(f.min)}}
+{{form_widget(f.min)}}
+{{form_label(f.max)}}
+{{form_widget(f.max)}}
+{{form_end(f)}}
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>email</td>
+        <td>NBR_Books</td>
+        <td>update</td>
+        <td>delete</td>
+    </tr>
+
+    {% for a in author %}
+    <tr>
+        <td>{{ a.id }}</td>
+        <td>{{ a.username|upper }}</td>
+        <td>{{ a.email }}</td>
+        <td>{{ a.nbrbooks }}</td>
+        <td><a href="{{path('editauthor',{'id': a.id})}}">update</td>
+        <td><a href="{{path('deleteauthor',{'id': a.id})}}">delete</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+Delete ZERO Books: <a href="{{ path('deleteZeroBooks') }}">Delete</a>

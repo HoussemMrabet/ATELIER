@@ -1,0 +1,6 @@
+{% for b in books %}
+    {{ b.Title }} <br>
+    {{ b.PublicationDate|date() }} <br>
+    {{ b.author.username }} <br>
+    ********************************* <br>
+{% endfor %}
